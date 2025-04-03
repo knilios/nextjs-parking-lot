@@ -5,7 +5,7 @@ class ParkingSpot {
                 (vehicle.hight - this.hight) * (-1) >= 0;
     }
 
-    isFull() {
+    isOccupied() {
         if(!this.car) {
             return true;
         }
