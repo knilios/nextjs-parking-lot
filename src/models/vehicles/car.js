@@ -1,10 +1,23 @@
 import Vehicle from "./vehicle"
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
-class Car extends Vehicle {
-    constructor() {
-        super()
-        this.hight = 1.31;
-        this.width = 2.69;
-        this.length = 4.55;
-    }
-}
+const carScheme = new Schema({
+  width: {
+    type: Number,
+    default: 1.31
+  },
+  hight: {
+    type: Number,
+    default: 2.69
+  },
+  length: {
+    type: Number,
+    default: 4.55
+  },
+  name: String
+});
+
+
+
+export default mongoose.models.Car || Vehicle.discriminator('Car', carScheme);

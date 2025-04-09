@@ -1,14 +1,13 @@
-class Vehicle {
-    constructor() {
-        this.width;
-        this.hight; 
-        this.length;
-    }
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
+options = {discriminatorKey: 'type', collection: 'vehicle'}
+const schema = new Schema({
+    width: Number,
+    hight: Number,
+    length: Number,
+    name: String
+})
 
-    isFit(parkingSpot) {
-        return parkingSpot.width - self.width >= 0 && 
-                parkingSpot.length - self.length >= 0 && 
-                parkingSpot.hight - self.hight >= 0;
-    }
-    
-}
+export default mongoose.models.Vehicle || mongoose.model("Vehicle", schema)
+
+// https://mongoosejs.com/docs/advanced_schemas.html
