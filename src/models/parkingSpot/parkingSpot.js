@@ -10,33 +10,11 @@ const parkingSpot = new Schema({
 }, options
 )
 
-class ParkingSpot {
-    constructor() {
-        this.car = undefined
-    }
-
-    isFit(vehicle) {
-        return (vehicle.width - this.width) * (-1) >= 0 && 
-                (vehicle.length - this.length) * (-1) >= 0 && 
-                (vehicle.hight - this.hight) * (-1) >= 0;
-    }
-
-    isOccupied() {
-        if(!this.car) {
-            return true;
-        }
-        return false;
-    }
-
-    parkCar(car) {
-        this.car = car
-    }
-
-    removeCar() {
-        this.car = undefined
-    }
+parkingSpot.methods.isFit = function isFit(vehicle) {
+    return (vehicle.width - this.width) * (-1) >= 0 && 
+            (vehicle.length - this.length) * (-1) >= 0 && 
+            (vehicle.hight - this.hight) * (-1) >= 0;
 }
-
 parkingSpot.loadClass(ParkingSpot)
 
 export default mongoose.models.ParkingSpot || mongoose.model('ParkingSpot', parkingSpot);
