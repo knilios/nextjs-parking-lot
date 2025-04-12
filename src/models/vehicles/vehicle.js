@@ -5,7 +5,8 @@ const schema = new Schema({
     width: Number,
     hight: Number,
     length: Number,
-    name: String
+    name: String,
+    parkingLocation: {type: mongoose.Schema.Types.ObjectId, ref: 'ParkingSpots'}
 })
 
 export default mongoose.models.Vehicle || mongoose.model("Vehicle", schema)

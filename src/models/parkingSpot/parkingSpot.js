@@ -3,10 +3,12 @@ const { Schema } = mongoose;
 
 options = {discriminatorKey: 'type', collection: 'parkingSpot'}
 
+
 const parkingSpot = new Schema({
-    width: Float64Array,
-    hight: Float64Array,
-    length: Float64Array
+    width: Number,
+    hight: Number,
+    length: Number,
+    level: {type: mongoose.Schema.Types.ObjectId, ref: 'Level'}
 }, options
 )
 
@@ -15,7 +17,6 @@ parkingSpot.methods.isFit = function isFit(vehicle) {
             (vehicle.length - this.length) * (-1) >= 0 && 
             (vehicle.hight - this.hight) * (-1) >= 0;
 }
-parkingSpot.loadClass(ParkingSpot)
 
 export default mongoose.models.ParkingSpot || mongoose.model('ParkingSpot', parkingSpot);
 
