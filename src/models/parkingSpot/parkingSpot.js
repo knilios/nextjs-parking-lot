@@ -8,7 +8,8 @@ const parkingSpot = new Schema({
     width: Number,
     hight: Number,
     length: Number,
-    level: {type: mongoose.Schema.Types.ObjectId, ref: 'Level'}
+    level: {type: mongoose.Schema.Types.ObjectId, ref: 'Level'},
+    occupied: Boolean
 }, options
 )
 
