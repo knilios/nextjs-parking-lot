@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-options = {discriminatorKey: 'type', collection: 'parkingSpot'}
+const options = {discriminatorKey: 'type', collection: 'parkingSpot'}
 
 
 const parkingSpot = new Schema({

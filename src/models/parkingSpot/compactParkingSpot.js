@@ -13,8 +13,7 @@ const schema = new Schema({
         hight: {
             type: Number,
             default: 2
-        },
-        car: CarClass
+        }
     }); 
 
-export default mongoose.models.motorcycleParkingLot || ParkingSpot.discriminator("motorcycleParkingLot", schema)
+export default mongoose.models.CompactParkingSpot || ParkingSpot.discriminator("CompactParkingSpot", schema)
