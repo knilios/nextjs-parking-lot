@@ -18,7 +18,7 @@ export default async function handler(req, res) {
                 console.log("request body in parking api: ", req.body)
                 const parkingHelper = new ParkingHelper(req.body.vehicle)
                 await parkingHelper.initialize()
-                const canPark = await parkingHelper.parkAt(req.body.parkingLot)
+                const canPark = await parkingHelper.parkAt(req.body.parking)
                 if(canPark) res.status(200).json({success: true})
                 else res.status(501).json({success: false})
             } catch(e) {

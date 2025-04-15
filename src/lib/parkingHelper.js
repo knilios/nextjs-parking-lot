@@ -13,14 +13,16 @@ class ParkingHelper {
         console.log("vehicle in helper: ", this.vehicle)
     }
 
-    async parkAt(parkingLot) {
-        const levels = await Level.find({parkingLot: parkingLot}).exec()
+    async parkAt(parkingLotId) {
+        console.log("recieve parking lot id : ", parkingLotId)
+        const levels = await Level.find({parkingLot: parkingLotId}).exec()
         console.log("levels: ", levels)
         for(let level of levels) {
             const parkingSpots = await ParkingSpot.find({level: level._id}).exec()
             console.log('parkingSpots: ', parkingSpots)
             for(let parkingSpot of parkingSpots) {
                 if(parkingSpot.occupied) continue;
+                if(!parkingSpot.isFit(this.vehicle)) continue;
                 this.vehicle.parkingLocation = parkingSpot._id
                 parkingSpot.occupied = true
                 await parkingSpot.save()

@@ -14,7 +14,7 @@ class ParkingLotBuilder {
         this.levels = []
         this.levelStructure = []
         this.name = name
-        this.parkingLot = ParkingLot.create({name: this.name})
+        this.parkingLot = new ParkingLot({name: this.name})
     }
     
     async addLevel(...parkingSpotSpecs) {
@@ -59,6 +59,7 @@ class ParkingLotBuilder {
     }
 
     create() {
+        this.parkingLot.save()
         return this.parkingLot
     }
 }
