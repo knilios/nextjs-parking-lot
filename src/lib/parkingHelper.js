@@ -32,12 +32,18 @@ class ParkingHelper {
     }
 
     async unPark() {
-        const parkingSpot = this.vehicle.parkAt.populate()
-        parkingSpot.occupied = false
-        this.vehicle.parkingSpot = null
-        parkingSpot.save()
-        this.vehicle.save()
-        return true
+        try{
+            const parkingSpot = await this.vehicle.populate("parkingLocation")
+            console.log(parkingSpot)
+            parkingSpot.occupied = false
+            this.vehicle.parkingLocation = null
+            parkingSpot.save()
+            this.vehicle.save()
+            return true
+        } catch (e) {
+            console.error("Error in unPark: ", e)
+            return false
+        }
     }
 }
 

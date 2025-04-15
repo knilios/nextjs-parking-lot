@@ -13,17 +13,17 @@ export default function Parking() {
 
     const fetchItems = async () => {
         const vehiclesRes = await fetch('/api/vehicle');
-        // const parkedVehiclesRes = await fetch('api/parkedvehicles')
+        const parkedVehiclesRes = await fetch('api/unpark')
         const parkingLotsRes = await fetch('/api/parkinglot')
         const vehicleData = await vehiclesRes.json();
         const parkingLotsData = await parkingLotsRes.json();
-        // const parkedVehicles = await parkedVehiclesRes.json();
+        const parkedVehicles = await parkedVehiclesRes.json();
         console.log("Beginning of the logs")
         console.log(vehicleData)
         console.log(parkingLotsData)
         setVehicles(vehicleData.data)
         setParkingLots(parkingLotsData.data)
-        // setparkedVehicles(vehicleData.data)
+        setparkedVehicles(parkedVehicles.data)
       };
 
       useEffect(() => {
@@ -39,6 +39,10 @@ export default function Parking() {
           newParkingForm.vehicle = vehicles[0]._id;
         }
         setParkingForm(prev => ({ ...prev, ...newParkingForm }));
+
+        if (parkedVehicles[0]) 
+          setParkedForm({vehicle: parkedVehicles[0]._id})
+      console.log("refreshed")
       }, [parkingLots, vehicles]);
 
       const handleCarParkChange = (e) => {
@@ -136,11 +140,10 @@ export default function Parking() {
           });
           const result = await res.json()
           if (!result.success) {
-            return alert("Cannot create that vehicle. Sorry for the inconvenience.")
+            return alert("Cannot unpark that vehicle. Sorry for the inconvenience.")
           }
-          alert("Successfully created your vehicle! Happy driving!")
+          alert("Successfully unpark your vehicle! Happy driving!")
           fetchItems();
-          setParkedForm({type: '0', name: ''});
         } catch (error) {
           console.log(error);
         }
@@ -217,13 +220,13 @@ export default function Parking() {
                     <button type='submit'>Create</button>
                 </form>
             </div>
-            {/* <div>
+            <div>
                 <h1>Unpark your vehicle</h1>
                 <form onSubmit={submitUnPark}>
                     <div>
                         <p>Select your vehicle</p>
-                        <select id="parkedVehicle" name='id' value={parkingForm.vehicle} onChange={handleUnparkChange}>
-                            {parkedVehicles.data.map((vehicle) => (
+                        <select id="parkedVehicle" name='vehicle' value={parkedForm.vehicle} onChange={handleUnparkChange}>
+                            {parkedVehicles.map((vehicle) => (
                             <option value={vehicle._id}>
                                 {vehicle.name}
                             </option>
@@ -232,7 +235,7 @@ export default function Parking() {
                     </div>
                     <button type='submit'>unpark</button>
                 </form>
-            </div> */}
+            </div>
         </div>
     )
 }

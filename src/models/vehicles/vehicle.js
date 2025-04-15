@@ -6,7 +6,7 @@ const schema = new Schema({
     hight: Number,
     length: Number,
     name: String,
-    parkingLocation: {type: mongoose.Schema.Types.ObjectId, ref: 'ParkingSpots'}
+    parkingLocation: {type: mongoose.Schema.Types.ObjectId, ref: 'ParkingSpot'}
 })
 
 export default mongoose.models.Vehicle || mongoose.model("Vehicle", schema)
