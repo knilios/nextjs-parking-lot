@@ -11,10 +11,6 @@ export default function Parking() {
     const [parkingForm, setParkingForm] = useState({parking: null, vehicle: null})
     const [parkedForm, setParkedForm] = useState({vehicle: null})
 
-    useEffect(() => {
-        fetchItems();
-      }, []);
-
     const fetchItems = async () => {
         const vehiclesRes = await fetch('/api/vehicle');
         // const parkedVehiclesRes = await fetch('api/parkedvehicles')
@@ -30,7 +26,20 @@ export default function Parking() {
         // setparkedVehicles(vehicleData.data)
       };
 
-      
+      useEffect(() => {
+        fetchItems();
+      }, []);
+
+      useEffect(() => {
+        const newParkingForm = {};
+        if (parkingLots[0]) {
+          newParkingForm.parking = parkingLots[0]._id;
+        }
+        if (vehicles[0]) {
+          newParkingForm.vehicle = vehicles[0]._id;
+        }
+        setParkingForm(prev => ({ ...prev, ...newParkingForm }));
+      }, [parkingLots, vehicles]);
 
       const handleCarParkChange = (e) => {
         console.log("change of car park form: ", e.target.name, e.target.value)

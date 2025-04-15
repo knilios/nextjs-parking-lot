@@ -9,7 +9,7 @@ class ParkingHelper {
     }
 
     async initialize() {
-        this.vehicle = await vehicle.find({_id: this.vehicleId}).exec()
+        this.vehicle = await vehicle.findOne({_id: this.vehicleId}).exec()
         console.log("vehicle in helper: ", this.vehicle)
     }
 
@@ -21,8 +21,9 @@ class ParkingHelper {
             console.log('parkingSpots: ', parkingSpots)
             for(let parkingSpot of parkingSpots) {
                 if(parkingSpot.occupied) continue;
-                this.vehicle.parkAt = parkingSpot._id
+                this.vehicle.parkingLocation = parkingSpot._id
                 parkingSpot.occupied = true
+                await parkingSpot.save()
                 await this.vehicle.save()
                 return true
             }
