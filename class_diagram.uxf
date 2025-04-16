@@ -1,0 +1,39 @@
+<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>150</x><y>336</y><w>126</w><h>42</h></coordinates><panel_attributes>ParkingSpot
+--
++canPark(vehicle:Vehicle): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>294</x><y>414</y><w>126</w><h>42</h></coordinates><panel_attributes>CompactParkingSpot
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>6</x><y>414</y><w>126</w><h>42</h></coordinates><panel_attributes>LargeParkingSpot
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>414</y><w>126</w><h>42</h></coordinates><panel_attributes>MotorcycleParkingSpot
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>72</x><y>372</y><w>318</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>230;10;230;40;10;40;10;70;10;40;230;40;230;70;230;40;510;40;510;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>252</y><w>126</w><h>42</h></coordinates><panel_attributes>Level
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>204</x><y>288</y><w>18</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>168</y><w>126</w><h>42</h></coordinates><panel_attributes>ParkingLot
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>204</x><y>204</y><w>18</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>558</x><y>180</y><w>126</w><h>42</h></coordinates><panel_attributes>Vehicle
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>216</y><w>318</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>230;10;230;40;10;40;10;70;10;40;230;40;230;70;230;40;510;40;510;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>414</x><y>258</y><w>126</w><h>42</h></coordinates><panel_attributes>Car
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>558</x><y>258</y><w>126</w><h>42</h></coordinates><panel_attributes>Motorcycle
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>702</x><y>258</y><w>126</w><h>42</h></coordinates><panel_attributes>Bus
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>192</y><w>300</w><h>180</h></coordinates><panel_attributes>lt=..&gt;</panel_attributes><additional_attributes>10;280;110;280;110;10;480;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>60</y><w>336</w><h>66</h></coordinates><panel_attributes>ParkingLotBuilder
+--
++name: string
+--
++construct(name:string)
++addLevel(parkingSpotSpecs: list[json[parkingLot: parkingLot, amount: int]]): ParkingLotBuilder
++addRandomizedLevel(parkingLotLevel: int): ParkingLotBuilder
++create(): ParkingLot</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>60</y><w>126</w><h>60</h></coordinates><panel_attributes>ParkingHelper
+--
++vehicle:Vehicle
+--
++constructure(vehicle:Vehicle)
++park(parkingLot)
++unPark()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>114</y><w>114</w><h>84</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>170;120;10;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>114</y><w>132</w><h>240</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;380;200;380;200;10</additional_attributes></element><element><id>Relation</id><coordinates><x>54</x><y>120</y><w>108</w><h>258</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>160;410;10;410;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>204</y><w>306</w><h>144</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>490;10;180;10;180;190;10;190;10;220</additional_attributes></element><element><id>UMLClass</id><coordinates><x>516</x><y>66</y><w>126</w><h>42</h></coordinates><panel_attributes>DBConnector
+--
+--
+connect()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>516</x><y>0</y><w>126</w><h>42</h></coordinates><panel_attributes>API
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>582</x><y>36</y><w>18</w><h>42</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element></diagram>
