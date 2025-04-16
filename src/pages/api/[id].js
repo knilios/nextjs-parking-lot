@@ -1,5 +1,5 @@
 // pages/api/items/[id].js
-import dbConnect from '@/lib/mongodb';
+import DBConnector from '@/lib/mongodb';
 import Item from '@/models/item';
 
 export default async function handler(req, res) {
@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     method,
   } = req;
 
-  await dbConnect();
+  await DBConnector.createInstance().connect();
 
   switch (method) {
     case 'PUT':

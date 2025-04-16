@@ -1,8 +1,9 @@
-import dbConnect from '@/lib/mongodb';
+import DBConnector from '@/lib/mongodb';
 import parkingLot from "@/models/parkingLot";
 import ParkingLotBuilder from '@/lib/parkingLotBuilder';
 export default async function handler(req, res) { 
-    await dbConnect();
+    await DBConnector.createInstance().connect();
+
 
     const { method } = req;
     

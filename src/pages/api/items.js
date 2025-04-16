@@ -1,9 +1,9 @@
 // pages/api/items.js
-import dbConnect from '../../lib/mongodb';
+import DBConnector from '../../lib/mongodb';
 import Item from '../../models/item';
 
 export default async function handler(req, res) {
-  await dbConnect();
+  await DBConnector.createInstance().connect();
 
   const { method } = req;
 

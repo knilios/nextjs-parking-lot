@@ -1,11 +1,12 @@
-import dbConnect from '@/lib/mongodb';
+import DBConnector from '@/lib/mongodb';
 import vehicle from '@/models/vehicles/vehicle'
 import motorcycle from '@/models/vehicles/motorcycle';
 import car from '@/models/vehicles/car';
 import bus from '@/models/vehicles/bus';
 
 export default async function handler(req, res) {
-  await dbConnect();
+  await DBConnector.createInstance().connect();
+
 
   const { method } = req;
 
